@@ -14,7 +14,7 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
 
 * [ ] Set up persistent compute environment for pipeline execution.
 * [ ] Configure Roblox Studio CLI (Rojo, Open Cloud SDK, etc.) for local + automated builds.
-* [ ] Store all secrets in a managed vault (e.g., AWS Secrets Manager, GCP Secret Manager) with least-privilege access.
+* [ ] Store secrets securely: `.env` locally, GitHub Actions Secrets for deployment.
 * [ ] Create version control repository with branch protections for stable build deployment.
 * [ ] Implement CI/CD base for automated build and test runs.
 
@@ -41,12 +41,12 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
 
 ### **4. API Security & Monitoring**
 
-* [ ] Implement API key rotation strategy with automated renewal.
+* [ ] **Local Development**: Create `.env` file with API keys (add to `.gitignore`).
+* [ ] **Production Deployment**: Store secrets in GitHub Actions Secrets for CI/CD.
 * [ ] Set up rate limiting and quota monitoring with alerts.
 * [ ] Add comprehensive API request logging and error tracking.
 * [ ] Configure backup authentication methods for failover.
-* [ ] Store all secrets in managed vault (AWS Secrets Manager, GCP Secret Manager) with least-privilege access.
-* [ ] Implement secret rotation mechanism for enhanced security.
+* [ ] **Future Scale**: Plan migration to cloud secrets manager (AWS/GCP) when needed.
 
 ### **5. Asset & Module Curation**
 
