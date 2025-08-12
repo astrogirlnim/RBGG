@@ -12,11 +12,11 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
 
 ### **1. Development Environment Setup**
 
-* [ ] Set up persistent compute environment for pipeline execution.
-* [ ] Configure Roblox Studio CLI (Rojo, Open Cloud SDK, etc.) for local + automated builds.
-* [ ] Store secrets securely: `.env` locally, GitHub Actions Secrets for deployment.
-* [ ] Create version control repository with branch protections for stable build deployment.
-* [ ] Implement CI/CD base for automated build and test runs.
+* [x] Set up persistent compute environment for pipeline execution.
+* [x] Configure Roblox Studio CLI (Rojo, Open Cloud SDK, etc.) for local + automated builds.
+* [x] Store secrets securely: `.env` locally, GitHub Actions Secrets for deployment.
+* [x] Create version control repository with branch protections for stable build deployment.
+* [x] Implement CI/CD base for automated build and test runs.
 
 ### **2. Local Development Toolchain**
 
