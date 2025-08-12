@@ -18,18 +18,48 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
 * [ ] Create version control repository with branch protections for stable build deployment.
 * [ ] Implement CI/CD base for automated build and test runs.
 
-### **2. Roblox Open Cloud Integration**
+### **2. Local Development Toolchain**
+
+* [ ] Install and configure Rojo for external script synchronization.
+* [ ] Set up Visual Studio Code with essential extensions:
+  * [ ] Luau Language Server (autocompletion, type checking)
+  * [ ] Selene (Lua linting for common issues)
+  * [ ] StyLua (code formatting)
+* [ ] Configure Wally for Lua package dependency management.
+* [ ] Implement TestEZ testing framework for automated unit tests.
+* [ ] Set up proper `.gitignore` for Roblox development projects.
+
+### **3. Roblox Open Cloud Integration**
 
 * [ ] Create Roblox group **"Prompted Playgrounds"** with publishing permissions.
 * [ ] Generate limited-scope Open Cloud API key for Universe/Place management.
+* [ ] Install and configure `@roblox/cloud` npm package for Node.js integration.
 * [ ] Implement API connection handler for publishing games to Roblox via Open Cloud.
-* [ ] Add API retry logic with exponential backoff.
+* [ ] Add API retry logic with exponential backoff and rate limiting (100 req/min).
+* [ ] Set up proper error handling for quota exceeded scenarios.
+* [ ] Configure Universe Publishing API for better version control.
 
-### **3. Asset & Module Curation**
+### **4. API Security & Monitoring**
+
+* [ ] Implement API key rotation strategy with automated renewal.
+* [ ] Set up rate limiting and quota monitoring with alerts.
+* [ ] Add comprehensive API request logging and error tracking.
+* [ ] Configure backup authentication methods for failover.
+* [ ] Store all secrets in managed vault (AWS Secrets Manager, GCP Secret Manager) with least-privilege access.
+* [ ] Implement secret rotation mechanism for enhanced security.
+
+### **5. Asset & Module Curation**
 
 * [ ] Vet and store approved Roblox modules for each template type (Obby, Tycoon, Simulator).
-* [ ] Sanitize all asset IDs for safe use.
-* [ ] Store curated assets in a secure, accessible repository (cloud or Roblox inventory).
+  * [ ] Use only "Endorsed" or verified creator content from Roblox Creator Marketplace.
+  * [ ] Source from verified DevForum community modules and open-source GitHub repositories.
+  * [ ] Implement automated asset safety scanning for malicious content.
+* [ ] Sanitize all asset IDs for safe use and prevent injection attacks.
+* [ ] Store curated assets in secure, accessible repository:
+  * [ ] Private Roblox group inventory for immediate access.
+  * [ ] Cloud backup storage with version control.
+* [ ] Create asset validation pipeline with approval workflow.
+* [ ] Maintain asset library documentation with safety ratings.
 
 ---
 
@@ -37,7 +67,7 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
 
 Criteria: Systems for storing, retrieving, and managing application data.
 
-### **4. Submission Data Handling**
+### **6. Submission Data Handling**
 
 * [ ] Implement secure storage for:
 
@@ -49,7 +79,7 @@ Criteria: Systems for storing, retrieving, and managing application data.
 * [ ] Add periodic log pruning routine.
 * [ ] Implement user-initiated erasure endpoint.
 
-### **5. Prompt → Parameter Mapping**
+### **7. Prompt → Parameter Mapping**
 
 * [ ] Implement parser to extract difficulty, progression speed, collectible types from incoming prompts.
 * [ ] Store extracted parameters alongside raw prompt in submission record.
@@ -61,7 +91,7 @@ Criteria: Systems for storing, retrieving, and managing application data.
 
 Criteria: Interfaces for operators or developers (minimal for MVP since no player-facing UI yet).
 
-### **6. Operator Dashboard (CLI/Web Minimal)**
+### **8. Operator Dashboard (CLI/Web Minimal)**
 
 * [ ] Provide command-line or simple web UI to:
 
@@ -76,7 +106,7 @@ Criteria: Interfaces for operators or developers (minimal for MVP since no playe
 
 Criteria: Main functionality — game generation, safety checks, publishing, and iteration.
 
-### **7. Template-First Assembly Engine**
+### **9. Template-First Assembly Engine**
 
 * [ ] Load correct template based on parsed parameters.
 * [ ] Inject configured gameplay elements:
@@ -86,26 +116,26 @@ Criteria: Main functionality — game generation, safety checks, publishing, and
   * **Simulator:** upgrade loop (2–3 tiers), collection, leveling.
 * [ ] Output playable `.rbxlx` or `.rbxm` package.
 
-### **8. Automated Playability Checks**
+### **10. Automated Playability Checks**
 
 * [ ] Spawn test: ensure player can spawn without errors.
 * [ ] Movement test: verify basic walking/jumping.
 * [ ] Core loop trigger test (collectible pickup, upgrade purchase, etc.).
 * [ ] Scan logs for runtime errors.
 
-### **9. Failure Handling System**
+### **11. Failure Handling System**
 
 * [ ] Implement up to 3 automated retries with refined prompts.
 * [ ] Build safe-mode fallback: publish base template if retries fail.
 * [ ] Escalate to manual fix and log for operator review.
 
-### **10. Human Playtest Step**
+### **12. Human Playtest Step**
 
 * [ ] Generate short-lived test link for operator to playtest in Roblox Studio.
 * [ ] Provide 2–5 min play window to confirm core loop.
 * [ ] Require pass/fail flag before publishing.
 
-### **11. Roblox Publishing**
+### **13. Roblox Publishing**
 
 * [ ] Push generated game to Roblox Group using Open Cloud.
 * [ ] Set metadata: title, description, end credits.
