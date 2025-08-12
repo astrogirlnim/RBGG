@@ -218,6 +218,9 @@ k8s-secrets/
 .vscode/
 .history/
 
+# Cursor
+.cursor/
+
 # IntelliJ IDEA
 .idea/
 
