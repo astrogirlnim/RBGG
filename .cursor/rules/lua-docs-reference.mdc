@@ -1,0 +1,143 @@
+---
+description: Reference Lua documentation for Roblox game template development and script generation
+globs: **/*.{lua,luau,js,jsx,ts,tsx}
+---
+
+## Lua Documentation Reference
+
+// Description: Reference Lua documentation for Roblox game template development and script generation
+// Recommended Globs: **/*.{lua,luau,js,jsx,ts,tsx}
+
+## Documentation Source
+The comprehensive Lua documentation is available in:
+- **File**: `documentation/repomix-output-AurelianSpodarec-LuaDocs.md` (14,230 lines)
+- **Content**: Complete Lua language reference, functions, examples, and best practices
+- **Usage**: Reference this file when generating Lua/Luau scripts for Roblox templates
+
+## When to Reference Lua Docs
+
+### During Template Development
+- **Obby Templates**: Lua scripts for checkpoints, obstacles, teleportation, player state management
+- **Tycoon Templates**: Resource management, upgrade cycles, income systems, data persistence
+- **Simulator Templates**: Grinding loops, collection systems, leveling mechanics, pet/item management
+
+### During Script Generation
+- **Parameter Mapping**: Converting user prompts to Lua script configurations
+- **Safety Checks**: Ensuring generated Lua code follows best practices and security guidelines
+- **Code Synthesis**: Creating modular, maintainable Lua scripts from templates
+
+### Code Quality & Standards
+- **Function Definitions**: Proper Lua syntax and patterns
+- **Error Handling**: Robust error management in generated scripts
+- **Performance**: Efficient Lua coding practices for Roblox environments
+- **Data Types**: Correct usage of Lua data types (tables, strings, numbers, functions)
+
+## Key Lua Concepts for Roblox Development
+
+### Essential Functions (Reference in docs)
+- **String manipulation**: `string.find()`, `string.gsub()`, `string.format()`
+- **Table operations**: `table.insert()`, `table.remove()`, `pairs()`, `ipairs()`
+- **Math functions**: `math.random()`, `math.floor()`, `math.ceil()`
+- **Coroutines**: `coroutine.create()`, `coroutine.resume()` for async operations
+
+### Roblox-Specific Considerations
+- **Luau differences**: Enhanced type system, improved performance
+- **RemoteEvents/RemoteFunctions**: Client-server communication
+- **DataStore operations**: Player data persistence
+- **Workspace manipulation**: Creating/modifying game objects
+
+## Development Workflow
+
+### Before Writing Lua Code
+1. **Check documentation** for relevant function syntax and examples
+2. **Verify Luau compatibility** for Roblox-specific features
+3. **Review security guidelines** for safe script generation
+
+### During Code Generation
+1. **Reference function signatures** from the documentation
+2. **Use documented examples** as templates for generated code
+3. **Follow Lua best practices** outlined in the docs
+
+### Code Review Process
+1. **Validate syntax** against Lua documentation standards
+2. **Check for deprecated functions** or patterns
+3. **Ensure compatibility** with Roblox's Luau implementation
+
+## Template-Specific Lua Patterns
+
+### Obby (Obstacle Course)
+```lua
+-- Checkpoint system (reference string and table functions)
+-- Obstacle mechanics (math functions for timing/movement)
+-- Player respawn logic (coroutines for delays)
+```
+
+### Tycoon (Business Simulation)
+```lua
+-- Income calculation (math operations)
+-- Upgrade systems (table manipulation)
+-- Purchase validation (conditional logic)
+```
+
+### Simulator (Grinding/Collection)
+```lua
+-- XP/level systems (math progression)
+-- Collection mechanics (table operations)
+-- Pet/item management (string/table combinations)
+```
+
+## Safety & Best Practices
+
+### Code Generation Guidelines
+- **Always sanitize** user input before script generation
+- **Use documented functions** to ensure reliability
+- **Follow Lua naming conventions** from the documentation
+- **Implement proper error handling** using documented patterns
+
+### Security Considerations
+- **Validate all asset IDs** before using in generated scripts
+- **Use safe string operations** to prevent injection
+- **Implement rate limiting** in generated scripts
+- **Follow Roblox anti-exploit guidelines**
+
+## Quick Reference Commands
+
+### Finding Functions in Documentation
+```bash
+# Search for specific function documentation
+grep -n "function_name" documentation/repomix-output-AurelianSpodarec-LuaDocs.md
+
+# Find string manipulation examples
+grep -A 5 -B 5 "string\." documentation/repomix-output-AurelianSpodarec-LuaDocs.md
+```
+
+### Common Documentation Sections
+- **Basic Functions**: Core Lua function reference
+- **String Library**: Text manipulation for user prompts
+- **Table Library**: Data structure operations
+- **Math Library**: Calculations for game mechanics
+- **Coroutine Library**: Async operations and timing
+
+## Integration with Project Goals
+
+### Prompt→Parameter Mapping
+Use Lua string functions to parse and extract:
+- Difficulty levels → script complexity parameters
+- Game mechanics → template function selections  
+- User preferences → customization variables
+
+### Template Assembly
+Reference documentation for:
+- Modular function design
+- Clean code organization
+- Performance optimization
+- Error handling patterns
+
+### Quality Assurance
+Validate generated code against:
+- Documented function signatures
+- Best practice examples
+- Security guidelines
+- Performance recommendations
+
+Remember: The Lua documentation is your source of truth for creating reliable, maintainable, and secure Roblox game scripts. Always reference it when implementing new features or debugging generated code.

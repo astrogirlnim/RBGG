@@ -218,8 +218,9 @@ k8s-secrets/
 .vscode/
 .history/
 
-# Cursor
-.cursor/
+# Cursor (exclude most files but allow rules)
+.cursor/*
+!.cursor/rules/
 
 # IntelliJ IDEA
 .idea/
