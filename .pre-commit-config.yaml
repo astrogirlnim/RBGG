@@ -1,0 +1,80 @@
+# Pre-commit configuration for Prompt2Play (Roblox Game Generation Pipeline)
+# Prevents secrets and sensitive data from being committed
+
+repos:
+  # Gitleaks - Secret detection
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.28.0
+    hooks:
+      - id: gitleaks
+
+  # Basic file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      # Prevent committing large files
+      - id: check-added-large-files
+        args: ['--maxkb=5000']  # 5MB limit
+
+      # Check for secrets in file names and content
+      - id: detect-private-key
+
+      # Ensure files end with newlines
+      - id: end-of-file-fixer
+        exclude: \.md$
+
+      # Remove trailing whitespace
+      - id: trailing-whitespace
+        exclude: \.md$
+
+      # Check YAML syntax
+      - id: check-yaml
+        exclude: \.pre-commit-config\.yaml$
+
+      # Check JSON syntax
+      - id: check-json
+
+      # Prevent committing merge conflict markers
+      - id: check-merge-conflict
+
+      # Check for files that would conflict on case-insensitive filesystems
+      - id: check-case-conflict
+
+  # Additional security checks for Node.js projects
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+        exclude: |
+          (?x)^(
+            .*\.lock$|
+            .*\.log$|
+            documentation/repomix-output-.*\.md$
+          )$
+
+# Configuration for specific tools
+default_language_version:
+  node: system
+
+# Files to exclude from all hooks
+exclude: |
+  (?x)^(
+    \.git/.*|
+    node_modules/.*|
+    \.cursor/.*|
+    build/.*|
+    dist/.*|
+    .*\.rbxlx$|
+    .*\.rbxl$|
+    .*\.rbxm$|
+    generated-games/.*|
+    logs/.*|
+    \.secrets\.baseline$
+  )$
+
+# Fail fast on first hook failure
+fail_fast: false
+
+# Minimum pre-commit version
+minimum_pre_commit_version: 3.0.0
