@@ -1,41 +1,27 @@
-# Prompt2Play (Roblox Game Generation Pipeline) - .gitignore
-
-# =============================================================================
-# SECRETS & SENSITIVE DATA
-# =============================================================================
-# Never commit these to version control
-.env
-.env.local
-.env.development
-.env.test
-.env.production
-secrets.json
-config/secrets.json
-keys/
-*.key
-*.pem
-*.p12
-*.pfx
-api-keys.json
-roblox-credentials.json
-discord-token.json
-
-# =============================================================================
-# NODE.JS / JAVASCRIPT / TYPESCRIPT
-# =============================================================================
-# Dependencies
+# Node.js
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
-.pnpm-debug.log*
+.npm
 
 # Runtime data
 pids
 *.pid
 *.seed
 *.pid.lock
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs
+*.log
 
 # Coverage directory used by tools like istanbul
 coverage/
@@ -44,23 +30,8 @@ coverage/
 # nyc test coverage
 .nyc_output
 
-# Grunt intermediate storage
-.grunt
-
-# Bower dependency directory
-bower_components
-
-# node-waf configuration
-.lock-wscript
-
-# Compiled binary addons
-build/Release
-
 # Dependency directories
 jspm_packages/
-
-# TypeScript cache
-*.tsbuildinfo
 
 # Optional npm cache directory
 .npm
@@ -68,323 +39,25 @@ jspm_packages/
 # Optional eslint cache
 .eslintcache
 
-# Optional stylelint cache
-.stylelintcache
-
-# Microbundle cache
-.rpt2_cache/
-.rts2_cache_cjs/
-.rts2_cache_es/
-.rts2_cache_umd/
-
-# Optional REPL history
-.node_repl_history
-
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# =============================================================================
-# ROBLOX DEVELOPMENT
-# =============================================================================
-# Roblox Studio files
-*.rbxlx.lock
-*.rbxl.lock
-*.rbxm.lock
-
-# Generated Roblox game files (these will be created by pipeline)
-generated-games/
-output-games/
-staging-games/
-temp-games/
-*.rbxlx
+# Roblox specific
 *.rbxl
 *.rbxm
-
-# Rojo build outputs
-build/
-dist/
-
-# Roblox Studio temporary files
-.robloxrc
-.rojo.json.bak
-*.rojo.bak
-
-# Asset cache
-asset-cache/
-roblox-assets/
-downloaded-assets/
-
-# Template cache (unless these are meant to be version controlled)
-template-cache/
-curated-templates/
-template-builds/
-
-# =============================================================================
-# DATABASES & STORAGE
-# =============================================================================
-# Local database files
-*.db
-*.sqlite
-*.sqlite3
-*.db-shm
-*.db-wal
-data/
-database/
-mongodb-data/
-redis-data/
-
-# Database dumps
-*.sql
-*.dump
-*.backup
-
-# =============================================================================
-# LOGGING & MONITORING
-# =============================================================================
-# Log files
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-.pnpm-debug.log*
-
-# Runtime logs
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Application logs
-app-logs/
-bot-logs/
-pipeline-logs/
-generation-logs/
-moderation-logs/
-error-logs/
-
-# Monitoring data
-metrics/
-analytics/
-performance-data/
-
-# =============================================================================
-# AI & ML
-# =============================================================================
-# Model files and caches
-models/
-*.model
-*.pkl
-*.joblib
-ai-cache/
-llm-cache/
-prompt-cache/
-
-# Training data and outputs
-training-data/
-model-outputs/
-embeddings/
-
-# =============================================================================
-# CLOUD & DEPLOYMENT
-# =============================================================================
-# Vercel
-.vercel
-
-# AWS
-.aws/
-
-# Google Cloud
-.gcloud/
-gcp-credentials.json
-
-# Docker
-Dockerfile.prod
-docker-compose.override.yml
-.dockerignore
-
-# Kubernetes
-k8s-secrets/
-*.yaml.bak
-
-# =============================================================================
-# DEVELOPMENT & IDE
-# =============================================================================
-# VS Code
-.vscode/
-.history/
-
-# Cursor (exclude most files but allow rules)
-.cursor/*
-!.cursor/rules/
-
-# IntelliJ IDEA
-.idea/
-
-# JetBrains IDEs
-*.iml
-*.ipr
-*.iws
-
-# Sublime Text
-*.sublime-workspace
-*.sublime-project
-
-# Atom
-.atom/
-
-# =============================================================================
-# OPERATING SYSTEM
-# =============================================================================
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon
-._*
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# Windows
-Thumbs.db
-Thumbs.db:encryptable
-ehthumbs.db
-ehthumbs_vista.db
-*.stackdump
-[Dd]esktop.ini
-$RECYCLE.BIN/
-*.cab
-*.msi
-*.msix
-*.msm
-*.msp
-*.lnk
-
-# Linux
-*~
-.fuse_hidden*
-.directory
-.Trash-*
-.nfs*
-
-# =============================================================================
-# TESTING & QUALITY ASSURANCE
-# =============================================================================
-# Test outputs
-test-results/
-test-reports/
-coverage/
-.nyc_output/
-
-# Jest
-.jest-cache/
-
-# Cypress
-cypress/videos/
-cypress/screenshots/
-cypress/downloads/
-
-# =============================================================================
-# TEMPORARY & CACHE
-# =============================================================================
-# Temporary files
-tmp/
+builds/
 temp/
-.tmp/
-.temp/
-*.tmp
 *.temp
 
-# Cache directories
-.cache/
-.parcel-cache/
-.next/
-.nuxt/
-.vuepress/dist
-.serverless/
+# Rojo
+default.project.json.bak
+sourcemap.json
 
-# =============================================================================
-# PROJECT-SPECIFIC
-# =============================================================================
-# Discord bot data
-bot-data/
-user-submissions/
-pending-queue/
-processed-submissions/
-
-# Pipeline state
-pipeline-state/
-generation-queue/
-playtest-queue/
-publishing-queue/
-
-# Moderation data
-moderation-data/
-banned-words.json
-filter-cache/
-
-# User data (compliance with data minimization)
-user-data/
-submission-history/
-decision-logs/
-
-# Game metadata
-game-metadata/
-thumbnail-cache/
-preview-cache/
-
-# Backup files
-*.bak
-*.backup
-backup/
-backups/
-
-# =============================================================================
-# DOCUMENTATION BUILD OUTPUT (keep source docs)
-# =============================================================================
-# Keep documentation/ directory but ignore built docs
-docs/build/
-docs/dist/
-docs/_site/
-docs/.vuepress/dist/
-
-# API documentation
-api-docs/build/
-swagger-ui-dist/
-
-# =============================================================================
-# PACKAGE MANAGER LOCKS (choose your strategy)
-# =============================================================================
-# Uncomment the appropriate line based on your package manager preference:
-# package-lock.json  # if using yarn
-# yarn.lock          # if using npm
-# pnpm-lock.yaml     # if using yarn or npm
-
-# =============================================================================
-# MISCELLANEOUS
-# =============================================================================
-# Editor directories and files
-.vscode/
+# IDE
+.vscode/settings.json
 .idea/
 *.swp
 *.swo
 *~
 
-# OS generated files
+# OS
 .DS_Store
 .DS_Store?
 ._*
@@ -393,5 +66,12 @@ swagger-ui-dist/
 ehthumbs.db
 Thumbs.db
 
-# Optional: keep empty directories with .gitkeep files
-!.gitkeep
+# Security
+secrets/
+*.pem
+*.key
+
+# Build artifacts
+dist/
+build/
+out/
