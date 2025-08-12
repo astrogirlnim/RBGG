@@ -19,7 +19,7 @@ const logger = winston.createLogger({
     winston.format.timestamp(),
     winston.format.json()
   ),
-  defaultMeta: { service: 'roblox-api' }
+  defaultMeta: { service: 'roblox-api' },
 });
 
 class RobloxAPIClient {
@@ -30,7 +30,8 @@ class RobloxAPIClient {
     this.universeId = process.env.ROBLOX_UNIVERSE_ID;
 
     // Rate limiting: Roblox allows 100 req/min, we'll use 90 to be safe
-    this.rateLimitPerMinute = parseInt(process.env.API_RATE_LIMIT_PER_MINUTE) || 90;
+    this.rateLimitPerMinute =
+      parseInt(process.env.API_RATE_LIMIT_PER_MINUTE) || 90;
     this.requestTimes = [];
 
     // Retry configuration
@@ -43,7 +44,7 @@ class RobloxAPIClient {
 
     logger.info('🔗 Roblox API Client initialized', {
       baseURL: this.baseURL,
-      rateLimit: this.rateLimitPerMinute
+      rateLimit: this.rateLimitPerMinute,
     });
   }
 
@@ -61,7 +62,9 @@ class RobloxAPIClient {
       const oldestRequest = Math.min(...this.requestTimes);
       const waitTime = 60000 - (now - oldestRequest) + 100; // Add 100ms buffer
 
-      logger.warn('⏳ Rate limit reached, waiting...', { waitTimeMs: waitTime });
+      logger.warn('⏳ Rate limit reached, waiting...', {
+        waitTimeMs: waitTime,
+      });
       await new Promise(resolve => setTimeout(resolve, waitTime));
 
       // Recursive call to check again after waiting
@@ -84,7 +87,7 @@ class RobloxAPIClient {
           logger.info('✅ Operation succeeded after retry', {
             context,
             attempt,
-            maxRetries: this.maxRetries
+            maxRetries: this.maxRetries,
           });
         }
 
@@ -99,7 +102,7 @@ class RobloxAPIClient {
             attempt,
             maxRetries: this.maxRetries,
             error: error.message,
-            status: error.response?.status
+            status: error.response?.status,
           });
           throw error;
         }
@@ -114,7 +117,7 @@ class RobloxAPIClient {
           nextAttempt: attempt + 1,
           delayMs: Math.round(totalDelay),
           error: error.message,
-          status: error.response?.status
+          status: error.response?.status,
         });
 
         await new Promise(resolve => setTimeout(resolve, totalDelay));
@@ -143,7 +146,7 @@ class RobloxAPIClient {
     return {
       'x-api-key': this.apiKey,
       'Content-Type': contentType,
-      'User-Agent': 'RBGG-Pipeline/1.0.0'
+      'User-Agent': 'RBGG-Pipeline/1.0.0',
     };
   }
 
@@ -154,17 +157,14 @@ class RobloxAPIClient {
     logger.info('🧪 Testing Roblox API connection...');
 
     return this.withRetry(async () => {
-      const response = await axios.get(
-        `${this.baseURL}/cloud/v2/users/me`,
-        {
-          headers: this.getHeaders(),
-          timeout: parseInt(process.env.API_REQUEST_TIMEOUT_MS) || 30000
-        }
-      );
+      const response = await axios.get(`${this.baseURL}/cloud/v2/users/me`, {
+        headers: this.getHeaders(),
+        timeout: parseInt(process.env.API_REQUEST_TIMEOUT_MS) || 30000,
+      });
 
       logger.info('✅ API connection test successful', {
         userId: response.data.id,
-        displayName: response.data.displayName
+        displayName: response.data.displayName,
       });
 
       return response.data;
@@ -178,18 +178,21 @@ class RobloxAPIClient {
     logger.info('📤 Publishing place to Roblox', {
       placeFilePath,
       placeId,
-      metadata
+      metadata,
     });
 
-    if (!await fs.pathExists(placeFilePath)) {
+    if (!(await fs.pathExists(placeFilePath))) {
       throw new Error(`Place file not found: ${placeFilePath}`);
     }
 
     return this.withRetry(async () => {
       const formData = new FormData();
-      formData.append('request', JSON.stringify({
-        publishRequest: metadata
-      }));
+      formData.append(
+        'request',
+        JSON.stringify({
+          publishRequest: metadata,
+        })
+      );
       formData.append('content', fs.createReadStream(placeFilePath));
 
       const response = await axios.post(
@@ -198,18 +201,18 @@ class RobloxAPIClient {
         {
           headers: {
             ...this.getHeaders('multipart/form-data'),
-            ...formData.getHeaders()
+            ...formData.getHeaders(),
           },
           timeout: parseInt(process.env.API_REQUEST_TIMEOUT_MS) || 30000,
           maxContentLength: Infinity,
-          maxBodyLength: Infinity
+          maxBodyLength: Infinity,
         }
       );
 
       logger.info('✅ Place published successfully', {
         placeId,
         versionNumber: response.data.versionNumber,
-        status: response.data.status
+        status: response.data.status,
       });
 
       return response.data;
@@ -227,14 +230,14 @@ class RobloxAPIClient {
         `${this.baseURL}/cloud/v2/places/${placeId}`,
         {
           headers: this.getHeaders(),
-          timeout: parseInt(process.env.API_REQUEST_TIMEOUT_MS) || 30000
+          timeout: parseInt(process.env.API_REQUEST_TIMEOUT_MS) || 30000,
         }
       );
 
       logger.info('✅ Place information retrieved', {
         placeId,
         displayName: response.data.displayName,
-        description: response.data.description
+        description: response.data.description,
       });
 
       return response.data;
@@ -253,13 +256,13 @@ class RobloxAPIClient {
         updates,
         {
           headers: this.getHeaders(),
-          timeout: parseInt(process.env.API_REQUEST_TIMEOUT_MS) || 30000
+          timeout: parseInt(process.env.API_REQUEST_TIMEOUT_MS) || 30000,
         }
       );
 
       logger.info('✅ Place metadata updated', {
         placeId,
-        updates
+        updates,
       });
 
       return response.data;
@@ -272,12 +275,16 @@ class RobloxAPIClient {
   getUsageStats() {
     const now = Date.now();
     const oneMinuteAgo = now - 60000;
-    const recentRequests = this.requestTimes.filter(time => time > oneMinuteAgo);
+    const recentRequests = this.requestTimes.filter(
+      time => time > oneMinuteAgo
+    );
 
     return {
       requestsInLastMinute: recentRequests.length,
       rateLimitPerMinute: this.rateLimitPerMinute,
-      utilizationPercent: Math.round((recentRequests.length / this.rateLimitPerMinute) * 100)
+      utilizationPercent: Math.round(
+        (recentRequests.length / this.rateLimitPerMinute) * 100
+      ),
     };
   }
 }
