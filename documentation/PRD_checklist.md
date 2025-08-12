@@ -25,7 +25,7 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
   * [ ] Luau Language Server (autocompletion, type checking)
   * [ ] Selene (Lua linting for common issues)
   * [ ] StyLua (code formatting)
-* [ ] Configure Wally for Lua package dependency management.
+* [ ] (Optional MVP) Configure Wally if third-party Luau packages are needed.
 * [ ] Implement TestEZ testing framework for automated unit tests.
 * [ ] Set up proper `.gitignore` for Roblox development projects.
 
@@ -33,11 +33,11 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
 
 * [ ] Create Roblox group **"Prompted Playgrounds"** with publishing permissions.
 * [ ] Generate limited-scope Open Cloud API key for Universe/Place management.
-* [ ] Install and configure `@roblox/cloud` npm package for Node.js integration.
+* [ ] (Optional MVP) Install and configure `@roblox/cloud` npm package if automating publish via Node now; otherwise defer to Phase 2.
 * [ ] Implement API connection handler for publishing games to Roblox via Open Cloud.
 * [ ] Add API retry logic with exponential backoff and rate limiting (100 req/min).
 * [ ] Set up proper error handling for quota exceeded scenarios.
-* [ ] Configure Universe Publishing API for better version control.
+* [ ] (Post-MVP) Configure Universe Publishing API for versioned releases and richer rollback support.
 
 ### **4. API Security & Monitoring**
 
@@ -45,7 +45,7 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
 * [ ] **Production Deployment**: Store secrets in GitHub Actions Secrets for CI/CD.
 * [ ] Set up rate limiting and quota monitoring with alerts.
 * [ ] Add comprehensive API request logging and error tracking.
-* [ ] Configure backup authentication methods for failover.
+* [ ] (Post-MVP) Configure backup authentication methods for CI failover.
 * [ ] **Future Scale**: Plan migration to cloud secrets manager (AWS/GCP) when needed.
 
 ### **5. Asset & Module Curation**
@@ -53,11 +53,11 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
 * [ ] Vet and store approved Roblox modules for each template type (Obby, Tycoon, Simulator).
   * [ ] Use only "Endorsed" or verified creator content from Roblox Creator Marketplace.
   * [ ] Source from verified DevForum community modules and open-source GitHub repositories.
-  * [ ] Implement automated asset safety scanning for malicious content.
+* [ ] (Post-MVP) Implement automated asset safety scanning for malicious content.
 * [ ] Sanitize all asset IDs for safe use and prevent injection attacks.
 * [ ] Store curated assets in secure, accessible repository:
   * [ ] Private Roblox group inventory for immediate access.
-  * [ ] Cloud backup storage with version control.
+  * [ ] (Post-MVP) Cloud backup storage with version control.
 * [ ] Create asset validation pipeline with approval workflow.
 * [ ] Maintain asset library documentation with safety ratings.
 
@@ -145,3 +145,13 @@ Criteria: Main functionality — game generation, safety checks, publishing, and
 ---
 
 If you want, I can also **add estimated build times and parallelization notes** so your AI developer can work on multiple independent items simultaneously without blocking. That would make this even more efficient to execute. Would you like me to do that next?
+
+---
+
+## Deferred (Post-MVP)
+
+- Universe Publishing API integration for versioned releases and streamlined rollback
+- Automated asset safety scanning pipeline at scale
+- Cloud backup storage for curated assets with version control
+- CI backup authentication methods and multi-tenant credential strategy
+- Full secrets manager migration (AWS/GCP) with rotation policies

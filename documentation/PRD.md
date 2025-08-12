@@ -79,5 +79,5 @@ A safe, template-first AI-powered pipeline that converts approved game ideas int
 
 ## Other Notes
 - Persistent compute environment required for running the pipeline and interacting with Roblox Open Cloud.
-- Secrets stored in managed vault; least-privilege Open Cloud scopes.
+- Secrets: `.env` for local development; GitHub Actions Secrets for deployment (least-privilege Open Cloud scopes). Migrate to cloud secrets manager post-MVP if needed.
 - MVP target: ASAP; 4–6 week build feasible if templates, API integration, and playability checks are developed in parallel.
