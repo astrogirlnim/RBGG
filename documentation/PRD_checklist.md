@@ -66,58 +66,22 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
 ## **Current Status Update (2025-01-13)**
 
 **Phase 1 Status**: 85% Complete - Foundation infrastructure implemented
-**Current Focus**: Local pipeline development and template system
+**Current Focus**: Template-first assembly engine (Phase 4)
 **Deferred Items**: Roblox group creation (100 Robux cost), live API integration
-**Next Priority**: Template-first assembly engine implementation
+**Development Strategy**: Jump to Phase 4 (core game generation) while Phase 2/3 can be simplified for MVP
 
-**Development Strategy**: Continue with local testing and template development while deferring external API dependencies. All core infrastructure complete and ready for game generation pipeline.
-
----
-
-## **Phase 2: Data Layer**
-
-Criteria: Systems for storing, retrieving, and managing application data.
-
-### **6. Submission Data Handling**
-
-* [ ] Implement secure storage for:
-
-  * User ID
-  * Submission text
-  * Decision logs
-  * Generated game links
-* [ ] Create interface for retrieving pending submissions for processing.
-* [ ] Add periodic log pruning routine.
-* [ ] Implement user-initiated erasure endpoint.
-
-### **7. Prompt → Parameter Mapping**
-
-* [ ] Implement parser to extract difficulty, progression speed, collectible types from incoming prompts.
-* [ ] Store extracted parameters alongside raw prompt in submission record.
-* [ ] Map parameters to template configuration files.
+**Next Priority Order**:
+1. **Phase 4**: Template-First Assembly Engine (core value proposition)
+2. **Phase 2**: Data Layer (can be mocked initially)  
+3. **Phase 3**: Interface Layer (basic CLI sufficient for MVP)
 
 ---
 
-## **Phase 3: Interface Layer**
-
-Criteria: Interfaces for operators or developers (minimal for MVP since no player-facing UI yet).
-
-### **8. Operator Dashboard (CLI/Web Minimal)**
-
-* [ ] Provide command-line or simple web UI to:
-
-  * View submission queue
-  * Trigger generation manually
-  * Trigger re-run on failure
-* [ ] Show status badges (pending, processing, failed, published).
-
----
-
-## **Phase 4: Implementation Layer**
+## **Phase 4: Implementation Layer** ⭐ **CURRENT PRIORITY**
 
 Criteria: Main functionality — game generation, safety checks, publishing, and iteration.
 
-### **9. Template-First Assembly Engine**
+### **9. Template-First Assembly Engine** 🎯 **START HERE**
 
 * [ ] Load correct template based on parsed parameters.
 * [ ] Inject configured gameplay elements:
@@ -150,19 +114,62 @@ Criteria: Main functionality — game generation, safety checks, publishing, and
 
 * [ ] Push generated game to Roblox Group using Open Cloud.
 * [ ] Set metadata: title, description, end credits.
-* [ ] Add splash-screen attribution: “Idea by @User from Discord.”
+* [ ] Add splash-screen attribution: "Idea by @User from Discord."
 * [ ] Implement v2+ update support without overwriting older versions.
 
 ---
 
-If you want, I can also **add estimated build times and parallelization notes** so your AI developer can work on multiple independent items simultaneously without blocking. That would make this even more efficient to execute. Would you like me to do that next?
+## **Phase 2: Data Layer** ⏳ **AFTER PHASE 4 MVP**
+
+Criteria: Systems for storing, retrieving, and managing application data.
+
+### **6. Submission Data Handling**
+
+* [ ] Implement secure storage for:
+
+  * User ID
+  * Submission text
+  * Decision logs
+  * Generated game links
+* [ ] Create interface for retrieving pending submissions for processing.
+* [ ] Add periodic log pruning routine.
+* [ ] Implement user-initiated erasure endpoint.
+
+### **7. Prompt → Parameter Mapping**
+
+* [ ] Implement parser to extract difficulty, progression speed, collectible types from incoming prompts.
+* [ ] Store extracted parameters alongside raw prompt in submission record.
+* [ ] Map parameters to template configuration files.
 
 ---
 
-## Deferred (Post-MVP)
+## **Phase 3: Interface Layer** ⏳ **AFTER PHASE 4 MVP**
 
+Criteria: Interfaces for operators or developers (minimal for MVP since no player-facing UI yet).
+
+### **8. Operator Dashboard (CLI/Web Minimal)**
+
+* [ ] Provide command-line or simple web UI to:
+
+  * View submission queue
+  * Trigger generation manually
+  * Trigger re-run on failure
+* [ ] Show status badges (pending, processing, failed, published).
+
+---
+
+## **Deferred Items (Post-MVP)**
+
+### **Phase 1 Completions (When Budget Available)**
 - Universe Publishing API integration for versioned releases and streamlined rollback
+- Roblox group "Prompted Playgrounds" creation (requires 100 Robux)
+- Production Open Cloud API key generation
+- Live API integration testing
+
+### **Advanced Features (Future Versions)**
 - Automated asset safety scanning pipeline at scale
 - Cloud backup storage for curated assets with version control
 - CI backup authentication methods and multi-tenant credential strategy
 - Full secrets manager migration (AWS/GCP) with rotation policies
+- Discord bot integration and community features
+- Advanced template customization and user feedback loops
