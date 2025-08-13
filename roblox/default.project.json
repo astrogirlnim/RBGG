@@ -2,33 +2,33 @@
   "name": "Prompt2Play-RBGG",
   "tree": {
     "$className": "DataModel",
-
     "ReplicatedStorage": {
       "$className": "ReplicatedStorage",
       "Shared": {
         "$path": "scripts/shared"
+      },
+      "Packages": {
+        "$path": "../Packages"
       },
       "Templates": {
         "$className": "Folder",
         "ObbyTemplate": {
           "$path": "templates/obby"
         },
-        "TycoonTemplate": {
-          "$path": "templates/tycoon"
-        },
         "SimulatorTemplate": {
           "$path": "templates/simulator"
+        },
+        "TycoonTemplate": {
+          "$path": "templates/tycoon"
         }
       }
     },
-
     "ServerScriptService": {
       "$className": "ServerScriptService",
       "Core": {
         "$path": "scripts/server"
       }
     },
-
     "StarterPlayer": {
       "$className": "StarterPlayer",
       "StarterPlayerScripts": {
@@ -38,7 +38,6 @@
         }
       }
     },
-
     "Workspace": {
       "$className": "Workspace",
       "$properties": {
@@ -48,7 +47,6 @@
       }
     }
   },
-
   "servePlaceIds": [],
   "globIgnorePaths": [
     "**/node_modules",

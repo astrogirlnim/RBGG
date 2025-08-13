@@ -50,12 +50,19 @@ temp/
 default.project.json.bak
 sourcemap.json
 
+# Wally package manager
+Packages/
+wally.lock
+wally-package-types.d.ts
+
 # IDE
-.vscode/settings.json
 .idea/
 *.swp
 *.swo
 *~
+
+# Cursor IDE (keep user-specific settings private)
+.cursor/settings.json
 
 # OS
 .DS_Store

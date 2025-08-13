@@ -12,7 +12,12 @@
     "format": "prettier --write src/**/*.js",
     "build": "npm run format && npm run lint",
     "rojo-sync": "rojo serve roblox/default.project.json",
-    "rojo-build": "rojo build roblox/default.project.json --output builds/latest.rbxlx"
+    "rojo-build": "rojo build roblox/default.project.json --output builds/latest.rbxlx",
+    "roblox-lint": "selene roblox/scripts/**/*.lua",
+    "roblox-format": "stylua roblox/scripts/",
+    "roblox-format-check": "stylua --check roblox/scripts/",
+    "wally-install": "wally install",
+    "roblox-dev": "npm run wally-install && npm run roblox-format && npm run roblox-lint && npm run rojo-sync"
   },
   "keywords": [
     "roblox",

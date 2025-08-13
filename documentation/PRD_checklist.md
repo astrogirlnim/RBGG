@@ -20,14 +20,14 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
 
 ### **2. Local Development Toolchain**
 
-* [ ] Install and configure Rojo for external script synchronization.
-* [ ] Set up Visual Studio Code with essential extensions:
-  * [ ] Luau Language Server (autocompletion, type checking)
-  * [ ] Selene (Lua linting for common issues)
-  * [ ] StyLua (code formatting)
-* [ ] (Optional MVP) Configure Wally if third-party Luau packages are needed.
-* [ ] Implement TestEZ testing framework for automated unit tests.
-* [ ] Set up proper `.gitignore` for Roblox development projects.
+* [x] Install and configure Rojo for external script synchronization.
+* [x] Set up Cursor IDE with essential extensions:
+  * [x] Luau Language Server (autocompletion, type checking)
+  * [x] Selene (Lua linting for common issues)
+  * [x] StyLua (code formatting)
+* [x] (Optional MVP) Configure Wally if third-party Luau packages are needed.
+* [x] Implement TestEZ testing framework for automated unit tests.
+* [x] Set up proper `.gitignore` for Roblox development projects.
 
 ### **3. Roblox Open Cloud Integration**
 

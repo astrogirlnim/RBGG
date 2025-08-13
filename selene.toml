@@ -1,0 +1,12 @@
+# Selene configuration for Roblox Luau projects
+std = "roblox"
+
+[lints]
+# Enable specific lints with appropriate levels
+unused_variable = "warn"
+incorrect_standard_library_use = "warn"
+undefined_variable = "warn"
+unscoped_variables = "warn"
+unused_argument = "allow"  # Allow unused arguments in Roblox event callbacks
+global_usage = "allow"  # Allow globals in Roblox context
+mixed_table = "warn"
