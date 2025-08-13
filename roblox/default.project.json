@@ -4,11 +4,11 @@
     "$className": "DataModel",
     "ReplicatedStorage": {
       "$className": "ReplicatedStorage",
-      "Shared": {
-        "$path": "scripts/shared"
-      },
       "Packages": {
         "$path": "../Packages"
+      },
+      "Shared": {
+        "$path": "scripts/shared"
       },
       "Templates": {
         "$className": "Folder",
@@ -42,8 +42,8 @@
       "$className": "Workspace",
       "$properties": {
         "FilteringEnabled": true,
-        "StreamingEnabled": false,
-        "AllowThirdPartySales": false
+        "AllowThirdPartySales": false,
+        "StreamingEnabled": false
       }
     }
   },

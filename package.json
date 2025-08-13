@@ -17,7 +17,9 @@
     "roblox-format": "stylua roblox/scripts/",
     "roblox-format-check": "stylua --check roblox/scripts/",
     "wally-install": "wally install",
-    "roblox-dev": "npm run wally-install && npm run roblox-format && npm run roblox-lint && npm run rojo-sync"
+    "roblox-dev": "npm run wally-install && npm run roblox-format && npm run roblox-lint && npm run rojo-sync",
+    "validate-setup": "node src/utils/roblox-setup.js validate",
+    "setup-guide": "node scripts/setup-guide.js"
   },
   "keywords": [
     "roblox",

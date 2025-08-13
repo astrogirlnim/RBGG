@@ -33,18 +33,18 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
 
 * [ ] Create Roblox group **"Prompted Playgrounds"** with publishing permissions.
 * [ ] Generate limited-scope Open Cloud API key for Universe/Place management.
-* [ ] (Optional MVP) Install and configure `@roblox/cloud` npm package if automating publish via Node now; otherwise defer to Phase 2.
-* [ ] Implement API connection handler for publishing games to Roblox via Open Cloud.
-* [ ] Add API retry logic with exponential backoff and rate limiting (100 req/min).
-* [ ] Set up proper error handling for quota exceeded scenarios.
+* [x] (Optional MVP) Install and configure `@roblox/cloud` npm package if automating publish via Node now; otherwise defer to Phase 2.
+* [x] Implement API connection handler for publishing games to Roblox via Open Cloud.
+* [x] Add API retry logic with exponential backoff and rate limiting (100 req/min).
+* [x] Set up proper error handling for quota exceeded scenarios.
 * [ ] (Post-MVP) Configure Universe Publishing API for versioned releases and richer rollback support.
 
 ### **4. API Security & Monitoring**
 
-* [ ] **Local Development**: Create `.env` file with API keys (add to `.gitignore`).
+* [x] **Local Development**: Create `.env` file with API keys (add to `.gitignore`).
 * [ ] **Production Deployment**: Store secrets in GitHub Actions Secrets for CI/CD.
-* [ ] Set up rate limiting and quota monitoring with alerts.
-* [ ] Add comprehensive API request logging and error tracking.
+* [x] Set up rate limiting and quota monitoring with alerts.
+* [x] Add comprehensive API request logging and error tracking.
 * [ ] (Post-MVP) Configure backup authentication methods for CI failover.
 * [ ] **Future Scale**: Plan migration to cloud secrets manager (AWS/GCP) when needed.
 
