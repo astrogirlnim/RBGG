@@ -19,7 +19,9 @@
     "wally-install": "wally install",
     "roblox-dev": "npm run wally-install && npm run roblox-format && npm run roblox-lint && npm run rojo-sync",
     "validate-setup": "node src/utils/roblox-setup.js validate",
-    "setup-guide": "node scripts/setup-guide.js"
+    "setup-guide": "node scripts/setup-guide.js",
+    "test-implementation": "node scripts/test-implementation.js",
+    "test-api-structure": "node scripts/test-api-structure.js"
   },
   "keywords": [
     "roblox",

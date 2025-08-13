@@ -31,8 +31,8 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
 
 ### **3. Roblox Open Cloud Integration**
 
-* [ ] Create Roblox group **"Prompted Playgrounds"** with publishing permissions.
-* [ ] Generate limited-scope Open Cloud API key for Universe/Place management.
+* [ ] Create Roblox group **"Prompted Playgrounds"** with publishing permissions. *(Deferred - requires 100 Robux)*
+* [ ] Generate limited-scope Open Cloud API key for Universe/Place management. *(Deferred - after group creation)*
 * [x] (Optional MVP) Install and configure `@roblox/cloud` npm package if automating publish via Node now; otherwise defer to Phase 2.
 * [x] Implement API connection handler for publishing games to Roblox via Open Cloud.
 * [x] Add API retry logic with exponential backoff and rate limiting (100 req/min).
@@ -60,6 +60,17 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
   * [ ] (Post-MVP) Cloud backup storage with version control.
 * [ ] Create asset validation pipeline with approval workflow.
 * [ ] Maintain asset library documentation with safety ratings.
+
+---
+
+## **Current Status Update (2025-01-13)**
+
+**Phase 1 Status**: 85% Complete - Foundation infrastructure implemented
+**Current Focus**: Local pipeline development and template system
+**Deferred Items**: Roblox group creation (100 Robux cost), live API integration
+**Next Priority**: Template-first assembly engine implementation
+
+**Development Strategy**: Continue with local testing and template development while deferring external API dependencies. All core infrastructure complete and ready for game generation pipeline.
 
 ---
 
