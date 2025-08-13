@@ -1,6 +1,9 @@
 # Selene configuration for Roblox Luau projects
 std = "roblox"
 
+# Exclude test files from undefined variable checks since TestEZ provides globals
+exclude = ["**/*.spec.lua"]
+
 [lints]
 # Enable specific lints with appropriate levels
 unused_variable = "warn"
