@@ -1,0 +1,61 @@
+{
+  "name": "prompt2play-rbgg",
+  "version": "1.0.0",
+  "description": "Roblox Game Generation Pipeline - AI-powered template-first game creation system",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "jest",
+    "lint": "eslint src/**/*.js",
+    "format": "prettier --write src/**/*.js",
+    "build": "npm run format && npm run lint",
+    "rojo-sync": "rojo serve roblox/default.project.json",
+    "rojo-build": "rojo build roblox/default.project.json --output builds/latest.rbxlx",
+    "roblox-lint": "selene roblox/scripts/**/*.lua",
+    "roblox-format": "stylua roblox/scripts/",
+    "roblox-format-check": "stylua --check roblox/scripts/",
+    "wally-install": "wally install",
+    "roblox-dev": "npm run wally-install && npm run roblox-format && npm run roblox-lint && npm run rojo-sync",
+    "validate-setup": "node src/utils/roblox-setup.js validate",
+    "setup-guide": "node scripts/setup-guide.js",
+    "test-implementation": "node scripts/test-implementation.js",
+    "test-api-structure": "node scripts/test-api-structure.js"
+  },
+  "keywords": [
+    "roblox",
+    "game-generation",
+    "ai",
+    "template-assembly",
+    "open-cloud"
+  ],
+  "author": "RBGG Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "winston": "^3.11.0",
+    "node-cron": "^3.0.3",
+    "form-data": "^4.0.0",
+    "fs-extra": "^11.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.55.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.1.0",
+    "@types/node": "^20.10.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ]
+  }
+}

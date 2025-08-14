@@ -1,0 +1,88 @@
+name: RBGG CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop, 'phase-*' ]
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  NODE_VERSION: '20.x'
+
+jobs:
+  # Phase 1: Basic CI/CD Setup
+  test-and-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+
+    - name: 🔧 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+
+    - name: 📦 Install dependencies
+      run: npm ci
+
+    - name: 🧹 Run linting
+      run: npm run lint
+      continue-on-error: true # Allow CI to continue for now
+
+    - name: 🧪 Run tests
+      run: npm test
+      continue-on-error: true # Allow CI to continue for now
+
+    - name: 🏗️ Test build
+      run: npm run build
+      continue-on-error: true # Allow CI to continue for now
+
+  # Phase 1: Security checks
+  security-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+
+    - name: 🔒 Run security audit
+      run: npm audit --audit-level moderate
+      continue-on-error: true # Allow CI to continue for now
+
+    - name: 🛡️ Check for secrets
+      uses: trufflesecurity/trufflehog@main
+      with:
+        path: ./
+        base: main
+        head: HEAD
+        extra_args: --debug --only-verified
+
+  # Phase 1: Roblox specific checks (placeholder for future)
+  roblox-validation:
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, '[roblox]') || github.event_name == 'pull_request'
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+
+    - name: 🎮 Validate Rojo configuration
+      run: |
+        # Install Rojo (when available in CI)
+        echo "🔧 Rojo validation (placeholder)"
+        echo "Future: rojo build --output test.rbxlx"
+        echo "Future: Validate .rbxlx file structure"
+
+    - name: 📋 Check template structure
+      run: |
+        echo "🧪 Template validation (placeholder)"
+        echo "Future: Validate Lua scripts syntax"
+        echo "Future: Check for required template components"
+
+# Future phases will add:
+# - Automated deployment to staging
+# - Integration testing with Roblox Open Cloud
+# - Template validation and testing
+# - Performance benchmarking

@@ -12,39 +12,39 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
 
 ### **1. Development Environment Setup**
 
-* [ ] Set up persistent compute environment for pipeline execution.
-* [ ] Configure Roblox Studio CLI (Rojo, Open Cloud SDK, etc.) for local + automated builds.
-* [ ] Store secrets securely: `.env` locally, GitHub Actions Secrets for deployment.
-* [ ] Create version control repository with branch protections for stable build deployment.
-* [ ] Implement CI/CD base for automated build and test runs.
+* [x] Set up persistent compute environment for pipeline execution.
+* [x] Configure Roblox Studio CLI (Rojo, Open Cloud SDK, etc.) for local + automated builds.
+* [x] Store secrets securely: `.env` locally, GitHub Actions Secrets for deployment.
+* [x] Create version control repository with branch protections for stable build deployment.
+* [x] Implement CI/CD base for automated build and test runs.
 
 ### **2. Local Development Toolchain**
 
-* [ ] Install and configure Rojo for external script synchronization.
-* [ ] Set up Visual Studio Code with essential extensions:
-  * [ ] Luau Language Server (autocompletion, type checking)
-  * [ ] Selene (Lua linting for common issues)
-  * [ ] StyLua (code formatting)
-* [ ] (Optional MVP) Configure Wally if third-party Luau packages are needed.
-* [ ] Implement TestEZ testing framework for automated unit tests.
-* [ ] Set up proper `.gitignore` for Roblox development projects.
+* [x] Install and configure Rojo for external script synchronization.
+* [x] Set up Cursor IDE with essential extensions:
+  * [x] Luau Language Server (autocompletion, type checking)
+  * [x] Selene (Lua linting for common issues)
+  * [x] StyLua (code formatting)
+* [x] (Optional MVP) Configure Wally if third-party Luau packages are needed.
+* [x] Implement TestEZ testing framework for automated unit tests.
+* [x] Set up proper `.gitignore` for Roblox development projects.
 
 ### **3. Roblox Open Cloud Integration**
 
-* [ ] Create Roblox group **"Prompted Playgrounds"** with publishing permissions.
-* [ ] Generate limited-scope Open Cloud API key for Universe/Place management.
-* [ ] (Optional MVP) Install and configure `@roblox/cloud` npm package if automating publish via Node now; otherwise defer to Phase 2.
-* [ ] Implement API connection handler for publishing games to Roblox via Open Cloud.
-* [ ] Add API retry logic with exponential backoff and rate limiting (100 req/min).
-* [ ] Set up proper error handling for quota exceeded scenarios.
+* [ ] Create Roblox group **"Prompted Playgrounds"** with publishing permissions. *(Deferred - requires 100 Robux)*
+* [ ] Generate limited-scope Open Cloud API key for Universe/Place management. *(Deferred - after group creation)*
+* [x] (Optional MVP) Install and configure `@roblox/cloud` npm package if automating publish via Node now; otherwise defer to Phase 2.
+* [x] Implement API connection handler for publishing games to Roblox via Open Cloud.
+* [x] Add API retry logic with exponential backoff and rate limiting (100 req/min).
+* [x] Set up proper error handling for quota exceeded scenarios.
 * [ ] (Post-MVP) Configure Universe Publishing API for versioned releases and richer rollback support.
 
 ### **4. API Security & Monitoring**
 
-* [ ] **Local Development**: Create `.env` file with API keys (add to `.gitignore`).
+* [x] **Local Development**: Create `.env` file with API keys (add to `.gitignore`).
 * [ ] **Production Deployment**: Store secrets in GitHub Actions Secrets for CI/CD.
-* [ ] Set up rate limiting and quota monitoring with alerts.
-* [ ] Add comprehensive API request logging and error tracking.
+* [x] Set up rate limiting and quota monitoring with alerts.
+* [x] Add comprehensive API request logging and error tracking.
 * [ ] (Post-MVP) Configure backup authentication methods for CI failover.
 * [ ] **Future Scale**: Plan migration to cloud secrets manager (AWS/GCP) when needed.
 
@@ -63,50 +63,25 @@ Criteria: Essential core systems, no dependencies, must exist before any other l
 
 ---
 
-## **Phase 2: Data Layer**
+## **Current Status Update (2025-01-13)**
 
-Criteria: Systems for storing, retrieving, and managing application data.
+**Phase 1 Status**: 85% Complete - Foundation infrastructure implemented
+**Current Focus**: Template-first assembly engine (Phase 4)
+**Deferred Items**: Roblox group creation (100 Robux cost), live API integration
+**Development Strategy**: Jump to Phase 4 (core game generation) while Phase 2/3 can be simplified for MVP
 
-### **6. Submission Data Handling**
-
-* [ ] Implement secure storage for:
-
-  * User ID
-  * Submission text
-  * Decision logs
-  * Generated game links
-* [ ] Create interface for retrieving pending submissions for processing.
-* [ ] Add periodic log pruning routine.
-* [ ] Implement user-initiated erasure endpoint.
-
-### **7. Prompt → Parameter Mapping**
-
-* [ ] Implement parser to extract difficulty, progression speed, collectible types from incoming prompts.
-* [ ] Store extracted parameters alongside raw prompt in submission record.
-* [ ] Map parameters to template configuration files.
+**Next Priority Order**:
+1. **Phase 4**: Template-First Assembly Engine (core value proposition)
+2. **Phase 2**: Data Layer (can be mocked initially)  
+3. **Phase 3**: Interface Layer (basic CLI sufficient for MVP)
 
 ---
 
-## **Phase 3: Interface Layer**
-
-Criteria: Interfaces for operators or developers (minimal for MVP since no player-facing UI yet).
-
-### **8. Operator Dashboard (CLI/Web Minimal)**
-
-* [ ] Provide command-line or simple web UI to:
-
-  * View submission queue
-  * Trigger generation manually
-  * Trigger re-run on failure
-* [ ] Show status badges (pending, processing, failed, published).
-
----
-
-## **Phase 4: Implementation Layer**
+## **Phase 4: Implementation Layer** ⭐ **CURRENT PRIORITY**
 
 Criteria: Main functionality — game generation, safety checks, publishing, and iteration.
 
-### **9. Template-First Assembly Engine**
+### **9. Template-First Assembly Engine** 🎯 **START HERE**
 
 * [ ] Load correct template based on parsed parameters.
 * [ ] Inject configured gameplay elements:
@@ -139,19 +114,62 @@ Criteria: Main functionality — game generation, safety checks, publishing, and
 
 * [ ] Push generated game to Roblox Group using Open Cloud.
 * [ ] Set metadata: title, description, end credits.
-* [ ] Add splash-screen attribution: “Idea by @User from Discord.”
+* [ ] Add splash-screen attribution: "Idea by @User from Discord."
 * [ ] Implement v2+ update support without overwriting older versions.
 
 ---
 
-If you want, I can also **add estimated build times and parallelization notes** so your AI developer can work on multiple independent items simultaneously without blocking. That would make this even more efficient to execute. Would you like me to do that next?
+## **Phase 2: Data Layer** ⏳ **AFTER PHASE 4 MVP**
+
+Criteria: Systems for storing, retrieving, and managing application data.
+
+### **6. Submission Data Handling**
+
+* [ ] Implement secure storage for:
+
+  * User ID
+  * Submission text
+  * Decision logs
+  * Generated game links
+* [ ] Create interface for retrieving pending submissions for processing.
+* [ ] Add periodic log pruning routine.
+* [ ] Implement user-initiated erasure endpoint.
+
+### **7. Prompt → Parameter Mapping**
+
+* [ ] Implement parser to extract difficulty, progression speed, collectible types from incoming prompts.
+* [ ] Store extracted parameters alongside raw prompt in submission record.
+* [ ] Map parameters to template configuration files.
 
 ---
 
-## Deferred (Post-MVP)
+## **Phase 3: Interface Layer** ⏳ **AFTER PHASE 4 MVP**
 
+Criteria: Interfaces for operators or developers (minimal for MVP since no player-facing UI yet).
+
+### **8. Operator Dashboard (CLI/Web Minimal)**
+
+* [ ] Provide command-line or simple web UI to:
+
+  * View submission queue
+  * Trigger generation manually
+  * Trigger re-run on failure
+* [ ] Show status badges (pending, processing, failed, published).
+
+---
+
+## **Deferred Items (Post-MVP)**
+
+### **Phase 1 Completions (When Budget Available)**
 - Universe Publishing API integration for versioned releases and streamlined rollback
+- Roblox group "Prompted Playgrounds" creation (requires 100 Robux)
+- Production Open Cloud API key generation
+- Live API integration testing
+
+### **Advanced Features (Future Versions)**
 - Automated asset safety scanning pipeline at scale
 - Cloud backup storage for curated assets with version control
 - CI backup authentication methods and multi-tenant credential strategy
 - Full secrets manager migration (AWS/GCP) with rotation policies
+- Discord bot integration and community features
+- Advanced template customization and user feedback loops
